@@ -1,18 +1,35 @@
 <html>
   <head>
     <script>
-      var updater = function (message) {
+      var updater = function () {
         var combo = '1A';
         var combos = document.getElementById('combination');
         combos.innerHTML = combo;
       };
     </script>
+    <style>
+      body {
+        background-color: ivory;
+        font-family: fantasy;
+      }
+
+      h1 {
+        color: black;
+        font-size: 40px;
+        text-align: center;
+      }
+      div {
+        color: brown;
+        font-size: 300px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <h1>Sensei Kimura's Fighting Combinations</h1>
     <div id="combination">
       <script>
-        updater('hello');
+        updater();
       </script>
     </div>
   </body>
