@@ -1,29 +1,36 @@
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css" />
     <script>
       var updater = function () {
-        var combo = '1A';
+        var combo = getRandomNumber() + getRandomLetter();
         var combos = document.getElementById('combination');
         combos.innerHTML = combo;
+
+        function getRandomNumber() {
+          return Math.floor(Math.random() * 10) + 1;
+        }
+
+        function getRandomLetter() {
+          number = Math.floor(Math.random() * 4);
+
+          switch (number) {
+            case 0:
+              return 'A';
+              break;
+            case 1:
+              return 'B';
+              break;
+            case 2:
+              return 'C';
+              break;
+            case 3:
+              return 'D';
+              break;
+          }
+        }
       };
     </script>
-    <style>
-      body {
-        background-color: ivory;
-        font-family: fantasy;
-      }
-
-      h1 {
-        color: black;
-        font-size: 40px;
-        text-align: center;
-      }
-      div {
-        color: brown;
-        font-size: 300px;
-        text-align: center;
-      }
-    </style>
   </head>
   <body>
     <h1>Sensei Kimura's Fighting Combinations</h1>
