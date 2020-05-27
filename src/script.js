@@ -1,3 +1,13 @@
+let myTimer;
+
+var start = function () {
+  myTimer = setInterval(updater, 5000);
+};
+
+var stop = function () {
+  clearInterval(myTimer);
+};
+
 var updater = function () {
   var combo = getRandomNumber() + getRandomLetter();
   var combos = document.getElementById('combination');
