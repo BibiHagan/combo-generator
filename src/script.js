@@ -1,17 +1,31 @@
-let myTimer;
+const long = 2;
+const medium = 1.5;
+const short = 1;
+const myTimer = 1000;
 
-var start = function () {
-  myTimer = setInterval(updater, 5000);
+let running = false;
+
+var start = async function () {
+  console.log('start');
+  running = true;
+  for (let i = 0; i <= 40 && running; i++) {
+    console.log('interval ', i);
+    const combo = updater();
+    await sleep(getMultiplier(combo) * myTimer);
+  }
 };
 
 var stop = function () {
-  clearInterval(myTimer);
+  running = false;
+  console.log('end');
 };
 
-var updater = function () {
-  var combo = getRandomNumber() + getRandomLetter();
-  var combos = document.getElementById('combination');
+let updater = function () {
+  let combo = getRandomNumber() + getRandomLetter();
+  let combos = document.getElementById('combination');
   combos.innerHTML = combo;
+
+  return combo;
 
   function getRandomNumber() {
     return Math.floor(Math.random() * 10) + 1;
@@ -36,3 +50,24 @@ var updater = function () {
     }
   }
 };
+
+function getMultiplier(combo) {
+  let modifier = data.find((element) => element.name === combo).modifier;
+  console.log(modifier);
+
+  switch (modifier) {
+    case 'long':
+      return long;
+      break;
+    case 'short':
+      return short;
+      break;
+    default:
+      return medium;
+      break;
+  }
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
