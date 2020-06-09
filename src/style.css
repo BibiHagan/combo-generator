@@ -12,9 +12,15 @@ div {
   color: brown;
   font-size: 300px;
   text-align: center;
+  bottom: 200px;
+  left: 30%;
+  position: fixed;
 }
 
 .button {
+  left: 45%;
+  bottom: 10px;
+  position: fixed;
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;

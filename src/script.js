@@ -1,7 +1,23 @@
 let myTimer;
 
-var start = function () {
-  myTimer = setInterval(updater, 5000);
+let buttonPressed = function () {
+  if (running) {
+    stop();
+    document.getElementById('message').innerHTML = 'Press start to get going';
+    document.getElementById('myButt').innerHTML = 'START';
+  } else {
+    start();
+    document.getElementById('message').innerHTML = '';
+    document.getElementById('myButt').innerHTML = 'STOP';
+  }
+};
+
+var start = async function () {
+  running = true;
+  for (let i = 0; i < totalCombos && running; i++) {
+    const combo = updateCombo();
+    await sleep(getMultiplier(combo) * myTimer);
+  }
 };
 
 var stop = function () {
