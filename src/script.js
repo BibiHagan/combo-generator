@@ -1,4 +1,3 @@
-const myTimer = 1000;
 const length = {
   LONG: 2,
   MEDIUM: 1.5,
@@ -6,23 +5,22 @@ const length = {
 };
 
 let running = false;
+let myTimer = 1000;
+let totalCombos = 40;
 
 var start = async function () {
-  console.log('start');
   running = true;
-  for (let i = 0; i <= 40 && running; i++) {
-    console.log('interval ', i);
-    const combo = updater();
+  for (let i = 0; i < totalCombos && running; i++) {
+    const combo = updateCombo();
     await sleep(getMultiplier(combo) * myTimer);
   }
 };
 
 var stop = function () {
   running = false;
-  console.log('end');
 };
 
-let updater = function () {
+let updateCombo = function () {
   let combo = getRandomNumber() + getRandomLetter();
   let combos = document.getElementById('combination');
   combos.innerHTML = combo;
@@ -55,7 +53,6 @@ let updater = function () {
 
 function getMultiplier(combo) {
   let modifier = data.find((element) => element.name === combo).modifier;
-  console.log(modifier);
 
   switch (modifier) {
     case 'long':
