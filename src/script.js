@@ -1,7 +1,9 @@
-const long = 2;
-const medium = 1.5;
-const short = 1;
 const myTimer = 1000;
+const length = {
+  LONG: 2,
+  MEDIUM: 1.5,
+  SHORT: 1,
+};
 
 let running = false;
 
@@ -57,13 +59,13 @@ function getMultiplier(combo) {
 
   switch (modifier) {
     case 'long':
-      return long;
+      return length.LONG;
       break;
-    case 'short':
-      return short;
+    case 'medium':
+      return length.MEDIUM;
       break;
     default:
-      return medium;
+      return length.SHORT;
       break;
   }
 }
